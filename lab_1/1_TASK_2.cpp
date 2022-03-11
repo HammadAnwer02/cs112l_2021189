@@ -7,10 +7,7 @@
 using namespace std;
 
 
-// struct Course {
-//     int credit_hours;
-//     int grade_point;
-// }
+
 
 const float A = 4;
 const float A_neg = 3.67;
