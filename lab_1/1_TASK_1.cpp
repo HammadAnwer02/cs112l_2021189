@@ -7,10 +7,6 @@
 using namespace std;
 
 
-// struct Course {
-//     int credit_hours;
-//     int grade_point;
-// }
 
 const float A = 4;
 const float A_neg = 3.67;
@@ -31,7 +27,6 @@ struct Student {
 
 
 float find_sgpa(float total, int num_courses);
-// void sort_students(Student[], int);
 
 void print_students(Student[], int);
 
@@ -112,16 +107,5 @@ void print_students(Student stds[], int size) {
     }
 }
 
-// void sort_students(Student std[], int size) 
-// {
-//     for (int i = size; i>0; i--) {
-//         for (int j = 0; j < i - 1) {
-//             if (stds[j].sgpa < stds[j].sgpa) {
-//                 Student temp = stds[j];
-//                 stds[j] = stds[j+1];
-//                 stds[j+1] =temp;
-//             }
-//         }
-//     }
 
-// }
+
