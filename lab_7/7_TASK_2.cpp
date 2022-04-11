@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+
 #include <Windows.h>
 
 using namespace std;
@@ -23,6 +24,12 @@ cout << "Please choose one of the options: \n"\
     << "Enter -1 to exit\n";\
 
 
+/**
+ * @brief make sure user enters an integer value only 
+ * 
+ * @param input the input stream
+ * @param n the variable where input is stored
+ */
 void validInput(istream& input, int& n)
 {
     while (1)
@@ -64,6 +71,12 @@ public:
 
 
 
+/**
+ * @brief Construct a new matrix Type::matrix Type object
+ * 
+ * @param _rows 
+ * @param _cols 
+ */
 
 matrixType::matrixType(int _rows = 0, int _cols = 0)
 {
@@ -81,7 +94,12 @@ matrixType::matrixType(int _rows = 0, int _cols = 0)
 
 }
 
-
+/**
+ * @brief Change the size of the matrix
+ * 
+ * @param _rows 
+ * @param _cols 
+ */
 void matrixType::changeMatrix (int _rows, int _cols)
 {
     rows = _rows;
@@ -105,15 +123,28 @@ void matrixType::changeMatrix (int _rows, int _cols)
     
 }
 
-int& matrixType::operator()(int i, int j) {
+/**
+ * @brief Allows indexing of the matrix array by overloading the () operator
+ * 
+ * @param i 
+ * @param j 
+ * @return int& 
+ */
+
+int& matrixType::operator()(int i, int j) { // returns a by reference value that is modifiable
     return mat[i][j];
 }
-int matrixType::operator()(int i, int j) const {
+int matrixType::operator()(int i, int j) const { // returns a copy of the value which does not modify the original matrix
     return mat[i][j];
 }
 
 
-
+/**
+ * @brief overloaded + operator to add two matrices
+ * 
+ * @param m1 the matrix which is being used to add to
+ * @return matrixType 
+ */
 matrixType matrixType::operator+ (matrixType m1) {
     matrixType temp(rows, cols);
 
@@ -131,11 +162,17 @@ matrixType matrixType::operator+ (matrixType m1) {
     }
     else 
     {
-
+        // catch invalid matrix
         throw invalid_argument{"Invalid Operation! Rows and Colomns should be same"};
     }
 }
 
+/**
+  * @brief overloaded - operator to subtract two matrices
+ * 
+ * @param m1 the matrix which is being used to subtract from
+ * @return matrixType 
+ */
 matrixType matrixType::operator- (matrixType m1) {
     matrixType temp(rows, cols);
 
@@ -154,6 +191,7 @@ matrixType matrixType::operator- (matrixType m1) {
     }
     else
     {
+        //catch invald matrix
         throw invalid_argument{"Invalid Operation! Rows and Colomns should be same"};
     }
 }
@@ -188,6 +226,13 @@ matrixType::~matrixType()
 {
 }
 
+/**
+ * @brief Output the matrix in a particular format
+ * 
+ * @param output 
+ * @param m1 
+ * @return std::ostream& 
+ */
 std::ostream &operator<<(std::ostream &output, const matrixType &m1)
 {
     for (int i = 0; i < m1.rows; i++)
@@ -201,6 +246,14 @@ std::ostream &operator<<(std::ostream &output, const matrixType &m1)
     }
     return output;
 }
+
+/**
+ * @brief Input the matrix elements
+ * 
+ * @param input 
+ * @param m1 
+ * @return std::istream& 
+ */
 std::istream &operator>>(std::istream &input, matrixType &m1)
 {
     cout << "Enter Matrix elements: ";
@@ -216,7 +269,7 @@ std::istream &operator>>(std::istream &input, matrixType &m1)
     return input;
 }
 
-
+// Driver Code
 int main(int argc, char const *argv[])
 {
     
